@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EFARINANGOS5.Vistas.VPersona"
+             Title="VPersona">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Entry x:Name="txtId" IsVisible="false"></Entry>
+
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+            <Entry x:Name="txtNombre" Grid.Row="0" Grid.Column="0"></Entry>
+            <Button x:Name="btnAgregar" Text="Agregar persona" Grid.Row="0" Grid.Column="1" Clicked="btnAgregar_Clicked"></Button>
+            <Label x:Name="statusMessage" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+            <Button x:Name="btnObtener" Text="Todos las personas" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Clicked="btnObtener_Clicked"></Button>
+
+        <CollectionView x:Name="ListaPersona" Grid.Row="3" Grid.Column="0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="6*"></ColumnDefinition>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="{Binding Id}"></Label>
+                        <Label Grid.Column="1" Text="{Binding Name}"></Label>
+                            <Button Grid.Column="2" Text="Editar" x:Name="btnEditar" Clicked="btnEditar_Clicked" CommandParameter="{Binding Id}"></Button>
+                            <Button Grid.Column="3" BackgroundColor="Red" Text="Eliminar" x:Name="btnEliminar" Clicked="btnEliminar_Clicked" CommandParameter="{Binding Id}"></Button>
+                        </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>
